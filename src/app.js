@@ -44,7 +44,28 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-    res.send({ forecast: "Its 50 degrees", location: "London" });
+    // the query object holds the key value pairs from the query string.
+    if (!req.query.address) {
+        return res.send({
+            error: "You must provide an address",
+        });
+    }
+    res.send({
+        forecast: "Its 50 degrees",
+        location: "Boston",
+        address: req.query.address,
+    });
+});
+
+app.get("/products", (req, res) => {
+    if (!req.query.search) {
+        return res.send({
+            error: "You must provide a search term",
+        });
+    }
+    res.send({
+        products: [],
+    });
 });
 
 app.get("/help/*", (req, res) => {
