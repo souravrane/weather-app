@@ -47,6 +47,15 @@ app.get("/weather", (req, res) => {
     res.send({ forecast: "Its 50 degrees", location: "London" });
 });
 
+app.get("/help/*", (req, res) => {
+    res.send("Help article not found");
+});
+
+// This is a wild card route. Hence it matches all the routes
+app.get("*", (req, res) => {
+    res.send("My 404 page");
+});
+
 app.listen(3000, () => {
     console.log("server is up on port 3000");
 });
