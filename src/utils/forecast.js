@@ -12,7 +12,6 @@ const getForecast = (lat, lon, callback) => {
             );
         } else {
             const current = response.body.current;
-            console.log(current);
             const data = `It is currently ${current.temperature} degrees, but feels like ${current.feelslike}, with a percipitation of ${current.precip}%.`;
             callback(undefined, data);
         }
