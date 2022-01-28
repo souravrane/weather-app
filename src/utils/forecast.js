@@ -6,7 +6,10 @@ const getForecast = (lat, lon, callback) => {
         if (error) {
             callback("Unable to connect to weather api", undefined);
         } else if (response.body.error) {
-            callback("Unable to find location", undefined);
+            callback(
+                "Unable to find location. Try another location",
+                undefined
+            );
         } else {
             const current = response.body.current;
             console.log(current);
